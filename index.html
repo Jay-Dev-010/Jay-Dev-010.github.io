@@ -62,14 +62,15 @@
 
         <script>
             function check() {
-                const cor = "187";
+                const cor = "eGNkMjU=";
                 const inp = document.getElementById("kinput").value;
 
-                if (inp == cor) {
-                    alert("OKey");
+                if (btoa(inp) == cor) {
+                    alert(atob("QWxsZXMgZ3V0ZSB6dW0gTmFtZW5zdGFnIEx1a2FzIQ==");
                 } else {
                     alert("key is not valid");
                 }
+            }
         </script>
 
     </body>
