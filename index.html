@@ -56,7 +56,21 @@
         <p>
             HWE is our religion!
         </p>
-        
+
+        <input id="kinput" type="password"/>
+        <button onclick="check()"> enter </button>
+
+        <script>
+            function check() {
+                const cor = "187";
+                const inp = document.getElementById("kinput").value;
+
+                if (inp == cor) {
+                    alert("OKey");
+                } else {
+                    alert("key is not valid");
+                }
+        </script>
 
     </body>
 </html>
